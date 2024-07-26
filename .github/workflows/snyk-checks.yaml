@@ -1,16 +1,13 @@
-name: SCA checks
-
-on: 
-  pull_request:
-   - master
-
+name: Example workflow using Snyk
+on: push
 jobs:
-  sca-checks:
-    run-on: ubuntu-latest
+  security:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.7
-
+      - uses: actions/checkout@master
       - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/node@0.4.0
+        uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: monitor
