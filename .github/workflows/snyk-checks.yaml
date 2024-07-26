@@ -2,7 +2,7 @@ name: SCA checks
 
 on: 
   pull_request:
-   - main
+   - master
 
 jobs:
   sca-checks:
